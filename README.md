@@ -1,6 +1,8 @@
 # Requirements
- - [Bun](http://bun.sh)
- - [ChromaDB in Docker Container](https://docs.trychroma.com/deployment#docker)
- - [Postgresql](https://www.postgresql.org/download/)
- - Apache2
- - Certbot for Apache2
+
+- [Bun](http://bun.sh)
+- [Qdrant](https://qdrant.tech)
+- [Postgresql](https://www.postgresql.org/download/)
+- Apache2
+- Certbot for Apache2
+- [Ollama](htttps://ollama.com)

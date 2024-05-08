@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	/** @type {number} */
+	let number;
+
+	async function roll() {
+		const response = await fetch('/roll');
+		number = await response.json();
+	}
+</script>
+
+<button on:click={roll}>Roll the dice</button>
+
+{#if number !== undefined}
+	<p>You rolled a {number}</p>
+{/if}
