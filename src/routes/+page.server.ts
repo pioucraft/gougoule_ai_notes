@@ -1,4 +1,4 @@
-import { tryLogin } from './tryLogin';
+import { tryLogin } from '$lib/tryLogin';
 
 export async function load({ cookies }: { cookies: { get: (key: string) => string } }) {
 	const token: string = cookies.get('token');
