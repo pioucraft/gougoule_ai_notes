@@ -7,7 +7,8 @@ export const user = pgTable('user', {
 	password: text('password'),
 	emailVerified: boolean('email_verified'),
 	emailVerificationCode: text('email_verification_code'),
-	lastEmailVerificationCodeSentAt: timestamp('last_email_verification_code_sent_at')
+	lastEmailVerificationCodeSentAt: timestamp('last_email_verification_code_sent_at'),
+	token: text('token')
 });
 
 export const note = pgTable('note', {
