@@ -1,11 +1,8 @@
-<script>
-	export let data;
+<script lang="ts">
+	import { login } from './script';
 
-	/*
-	{#if data.signUpAllowed}
-		<p>Sign Up</p>
-	{/if}
-	*/
+	var email: string = '';
+	var password: string = '';
 </script>
 
 <div id="wrapper">
@@ -13,19 +10,15 @@
 		<h2>Log in to continue :</h2>
 		<div id="wrapper-loginBox-email">
 			<p>Email :</p>
-			<input type="email">
+			<input bind:value={email} type="email" />
 		</div>
 
 		<div id="wrapper-loginBox-password">
 			<p>Password :</p>
-			<input type="password">
+			<input bind:value={password} type="password" />
 		</div>
-		
-		<button id="wrapper-loginBox-button">Log in
-			{#if data.signUpAllowed}
-			or sign up
-			{/if}
-		</button>
+
+		<button id="wrapper-loginBox-button" on:click={() => login(email, password)}>Log in</button>
 	</div>
 </div>
 

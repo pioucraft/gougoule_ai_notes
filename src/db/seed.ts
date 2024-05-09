@@ -13,9 +13,8 @@ const main = async () => {
 		await db.insert(user).values({
 			name: 'admin',
 			email: 'email@email.com',
-			password: 'password',
-			token: 'token',
-			emailVerified: true
+			password: await Bun.password.hash('password'),
+			token: 'TOKEN'
 		});
 		console.log('Database seeded successfully');
 		process.exit(0);
