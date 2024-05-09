@@ -1,9 +1,10 @@
 import { tryLogin } from '$lib/tryLogin';
-import { redirect } from '@sveltejs/kit';
+import { redirect, type Cookies } from '@sveltejs/kit';
 
-export async function load({ cookies }: { cookies: { get: (key: string) => string } }) {
-	const token: string = cookies.get('token');
+export async function load({ cookies }: { cookies: Cookies }) {
+	const token:string|undefined = cookies.get('token');
 	if (!token) redirect(302, '/login');
-	const username: string = await tryLogin(token);
+	const username: string | false = await tryLogin(token);
+	if(!username) redirect(302, '/login');
 	return { username };
 }

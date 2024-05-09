@@ -1,9 +1,9 @@
-import { redirect } from '@sveltejs/kit';
-import { login } from '$lib/login';
+import { db } from '../db/db';
+import { eq } from 'drizzle-orm';
+import { user } from '../db/schema';
 
-export async function tryLogin(token: string): Promise<string> {
-	let username = await login(token);
-	if (!username) redirect(302, '/login');
-
-	return username as string;
+export async function tryLogin(token: string): Promise<string | false> {
+	let users = await db.select().from(user).where(eq(user.token, token));
+	if (users.length) return users[0].name;
+	else return false;
 }
