@@ -10,11 +10,11 @@ export async function login(email: string, password: string): Promise<void> {
 			password
 		});
 		setCookie('token', loginResponse.data, 100);
-		toasts.success("Success", "Logged in", 3000, true)
-		goto("/")
+		toasts.success('Success', 'Logged in', 3000, true);
+		goto('/');
 	} catch (err) {
 		if (axios.isAxiosError(err)) {
-			toasts.error("Error", err.response?.data, 3000, true);
+			toasts.error('Error', err.response?.data, 3000, true);
 		}
 	}
 }
