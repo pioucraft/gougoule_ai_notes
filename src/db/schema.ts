@@ -11,7 +11,7 @@ export const user = pgTable('user', {
 export const note = pgTable('note', {
 	id: serial('id'),
 	children: text('children'),
-	parent: text('parent'),
+	parent: integer('parent'),
 	title: text('title').notNull(),
 	body: text('body'),
 	userId: integer('user_id').notNull(),
@@ -23,5 +23,6 @@ export const conversation = pgTable('conversation', {
 	id: serial('id'),
 	userId: integer('user_id').notNull(),
 	title: text('title').notNull().default('New Conversation'),
-	body: text('body')
+	body: text('body'),
+	parent: integer("parent")
 });

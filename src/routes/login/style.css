@@ -65,3 +65,10 @@
 	font-size: large;
 	cursor: pointer;
 }
+
+
+@media (max-width: 31rem) {
+	#wrapper-loginBox {
+		width: calc(100vw - 6rem);
+	}
+}
