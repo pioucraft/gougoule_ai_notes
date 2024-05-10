@@ -2,7 +2,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import postgres from 'postgres';
 
-const sql = postgres(process.env.DB_URL ?? 'default-db-url', { max: 1 });
+const sql = postgres(`postgresql://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`, { max: 1 });
 const db = drizzle(sql);
 
 const main = async () => {
