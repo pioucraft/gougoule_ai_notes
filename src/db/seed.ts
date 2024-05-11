@@ -72,7 +72,8 @@ const main = async () => {
 			},
 			{
 				role: 'assistant',
-				content: "Do you really like potatoes ? If yes, I'd love to give you more informations about them",
+				content:
+					"Do you really like potatoes ? If yes, I'd love to give you more informations about them",
 				date: new Date(),
 				id: 3
 			}

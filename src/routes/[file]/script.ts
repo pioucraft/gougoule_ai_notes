@@ -11,7 +11,7 @@ export function makeData(data: {
 	params: { file: string };
 }) {
 	// Reset the variables
-	conversation.set(undefined)
+	conversation.set(undefined);
 	conversationMessages.set(undefined);
 	note.set(undefined);
 	notesAndConversations.set(undefined);
@@ -40,22 +40,51 @@ export function makeData(data: {
 }
 
 export async function createNote(file: string) {
-	let name = prompt("Name :")
-	let parent = file == "home" ? null : Number(file)
-	let token = getCookie("token")
-	if(!token) goto("/login")
+	let name = prompt('Name :');
+	let parent = file == 'home' ? null : Number(file);
+	let token = getCookie('token');
+	if (!token) goto('/login');
 	try {
-		(await axios.post(`/createNote`, {name, parent}, {"headers": {"Authorization": `Bearer ${token}`}})).data.id
-		
-		let notes = (await axios.post("/", undefined, {"headers": {"Authorization": `Bearer ${token}`}})).data
-		notesAndConversations.set(
-			notes.filter((x: any) => x.parent == Number(file) || file == 'home')
-		);
-	}
-	catch(err) {
+		(
+			await axios.post(
+				`/createNote`,
+				{ name, parent },
+				{ headers: { Authorization: `Bearer ${token}` } }
+			)
+		).data.id;
+
+		let notes = (
+			await axios.post('/', undefined, { headers: { Authorization: `Bearer ${token}` } })
+		).data;
+		notesAndConversations.set(notes.filter((x: any) => x.parent == Number(file) || file == 'home'));
+	} catch (err) {
 		if (axios.isAxiosError(err)) {
 			toasts.error('Error', err.response?.data, 3000, true);
 		}
 	}
-	
+}
+
+export async function createConversation(file: string) {
+	let name = prompt('Name :');
+	let parent = file == 'home' ? null : Number(file);
+	let token = getCookie('token');
+	if (!token) goto('/login');
+	try {
+		(
+			await axios.post(
+				`/createConversation`,
+				{ name, parent },
+				{ headers: { Authorization: `Bearer ${token}` } }
+			)
+		).data.id;
+
+		let notes = (
+			await axios.post('/', undefined, { headers: { Authorization: `Bearer ${token}` } })
+		).data;
+		notesAndConversations.set(notes.filter((x: any) => x.parent == Number(file) || file == 'home'));
+	} catch (err) {
+		if (axios.isAxiosError(err)) {
+			toasts.error('Error', err.response?.data, 3000, true);
+		}
+	}
 }

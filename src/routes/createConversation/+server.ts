@@ -1,4 +1,4 @@
-import { createNote } from '$lib/createNote';
+import { createConversation } from '$lib/createConversation';
 import { json } from '@sveltejs/kit';
 
 export async function POST({ request }: { request: Request }) {
@@ -13,7 +13,11 @@ export async function POST({ request }: { request: Request }) {
 	} catch (err) {
 		body = { parent: undefined, name: undefined };
 	}
-	let id = await createNote(body.parent ?? null, body.name ?? 'New Note', authorization);
+	let id = await createConversation(
+		body.parent ?? null,
+		body.name ?? 'New Conversation',
+		authorization
+	);
 	if (typeof id == 'string') return new Response(`400 ${id}`, { status: 400 });
 	return json(id[0]);
 }

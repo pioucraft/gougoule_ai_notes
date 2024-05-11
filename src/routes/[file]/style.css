@@ -37,7 +37,7 @@
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 2em auto;
-	
+
 	justify-content: start;
 	cursor: pointer;
 	box-sizing: border-box;

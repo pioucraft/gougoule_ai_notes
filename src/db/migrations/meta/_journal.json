@@ -1,20 +1,20 @@
 {
-  "version": "5",
-  "dialect": "pg",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "5",
-      "when": 1715346064552,
-      "tag": "0000_red_khan",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1715443253430,
-      "tag": "0001_massive_skullbuster",
-      "breakpoints": true
-    }
-  ]
+	"version": "5",
+	"dialect": "pg",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "5",
+			"when": 1715346064552,
+			"tag": "0000_red_khan",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "5",
+			"when": 1715443253430,
+			"tag": "0001_massive_skullbuster",
+			"breakpoints": true
+		}
+	]
 }
