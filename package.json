@@ -34,7 +34,7 @@
 		"@types/bun": "^1.1.1",
 		"axios": "^1.6.8",
 		"dotenv": "^16.4.5",
-		"drizzle-kit": "^0.20.18",
+		"drizzle-kit": "^0.21.1",
 		"drizzle-orm": "^0.30.10",
 		"pg": "^8.11.5",
 		"postgres": "^3.4.4",

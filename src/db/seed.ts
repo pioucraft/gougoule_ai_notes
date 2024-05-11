@@ -86,7 +86,7 @@ const main = async () => {
 		await db.insert(conversation).values({
 			userId: userId,
 			parent: noteId,
-			title: 'Old conversation w qweq weqw eqw rtert hrth rthgnjweuzwefwfegwrhegrhugrhui'
+			title: 'Old conversation'
 		});
 
 		await db.insert(note).values({

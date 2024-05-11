@@ -88,3 +88,7 @@ export async function createConversation(file: string) {
 		}
 	}
 }
+
+export async function handleFileMove(original: any, data: any) {
+	console.log(original, data);
+}
