@@ -18,12 +18,32 @@
 	gap: 0.5rem;
 }
 
-.wrapper-sidebar-button {
+.wrapper-sidebar-element {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	background-color: transparent;
 	padding: 0.2rem;
 	border-radius: 0.5rem;
+	color: gray;
+	transition: background-color 0.2s ease-in-out;
+	transition: color 0.1s ease-in-out;
+	width: 13rem;
+	/*
+	display: flex;
+	flex-direction: row;
+	gap: 0.3em;
+	*/
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 2em auto;
+	
+	justify-content: start;
+	cursor: pointer;
+	box-sizing: border-box;
 }
 
-.wrapper-sidebar-button:hover {
+.wrapper-sidebar-element:hover {
 	background-color: gainsboro;
+	color: black;
 }

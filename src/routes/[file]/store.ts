@@ -5,3 +5,8 @@ export const notesAndConversations = writable<undefined | (noteType | conversati
 	undefined
 );
 export const conversation = writable<undefined | conversationType>(undefined);
+export const conversationMessages = writable<
+	undefined | { role: 'user' | 'assistant'; content: string; date: Date; id: number }[]
+>(undefined);
+
+export const note = writable<undefined | noteType>(undefined);
