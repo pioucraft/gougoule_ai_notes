@@ -12,7 +12,6 @@ export type userType = typeof user.$inferSelect;
 
 export const note = pgTable('note', {
 	id: serial('id'),
-	children: text('children'),
 	parent: integer('parent'),
 	title: text('title').notNull(),
 	body: text('body').notNull().default(''),

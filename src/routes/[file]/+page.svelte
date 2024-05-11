@@ -2,20 +2,21 @@
 	import { conversation, conversationMessages, note, notesAndConversations } from './store';
 	import Chatbubble from '$lib/Chatbubble.svelte';
 	import Document from '$lib/Document.svelte';
-	import { makeData } from './script';
+	import { createNote, makeData } from './script';
 	import ArrowLeft from '$lib/ArrowLeft.svelte';
 	import UserCircle from '$lib/UserCircle.svelte';
 
 	export let data;
 
-	makeData(data);
+	$: makeData(data);
+
 </script>
 
 <div id="wrapper">
-	<div class="" data-sveltekit-reload id="wrapper-sidebar">
-		{#if $notesAndConversations}
+	<div class="" id="wrapper-sidebar">
+		{#if $notesAndConversations != undefined}
 			{#if $note}
-				<a
+				<a  
 					class="wrapper-sidebar-element "
 					href="/{$note.parent ?? 'home'}"><ArrowLeft /> .../{$note.title}</a
 				>
@@ -25,7 +26,7 @@
 				<div style="text-overflow: ellipsis; width: auto; white-space: nowrap; overflow: hidden;">{data.username}</div>
 			</button>
 			<span class="border-separate"></span>
-			<button
+			<button on:click={async () => await createNote(data.params.file)}
 				class="font-bold wrapper-sidebar-element "
 			>
 				+ New Note
@@ -51,7 +52,7 @@
 					>
 				{/if}
 			{/each}
-		{:else if $conversation}
+		{:else if $conversation != undefined}
 			<a
 				class="wrapper-sidebar-element " 
 				href="/{$conversation.parent ?? 'home'}"><ArrowLeft /> <div style="text-overflow: ellipsis; width: 11em; white-space: nowrap; overflow: hidden;">.../{$conversation.title}</div></a

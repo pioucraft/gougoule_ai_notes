@@ -82,27 +82,11 @@ const main = async () => {
 			body: JSON.stringify(conversationBody)
 		});
 
-		const secondNoteFromDB = await db.select().from(note).where(eq(note.userId, userId));
-		if (!secondNoteFromDB[0]) throw new Error('Could not find note');
-		const secondNoteId = secondNoteFromDB[2].id;
-
 		await db.insert(conversation).values({
 			userId: userId,
 			parent: noteId,
 			title: 'Old conversation w qweq weqw eqw rtert hrth rthgnjweuzwefwfegwrhegrhugrhui'
 		});
-
-		const conversationFromDB = await db
-			.select()
-			.from(conversation)
-			.where(eq(conversation.userId, userId));
-		if (!conversationFromDB[0]) throw new Error('Could not find conversation');
-		const conversationId = conversationFromDB[1].id;
-
-		await db
-			.update(note)
-			.set({ children: JSON.stringify([`ai-${conversationId}`, secondNoteId]) })
-			.where(eq(note.id, noteId));
 
 		await db.insert(note).values({
 			title: 'Bonjour',

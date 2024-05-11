@@ -27,7 +27,7 @@
 	border-radius: 0.5rem;
 	color: gray;
 	transition: background-color 0.2s ease-in-out;
-	transition: color 0.1s ease-in-out;
+	transition: color 0.2s ease-in-out;
 	width: 13rem;
 	/*
 	display: flex;
