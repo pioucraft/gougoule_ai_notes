@@ -1,6 +1,5 @@
-import { redirect } from "@sveltejs/kit";
+import { redirect } from '@sveltejs/kit';
 
 export function load() {
-    redirect(301, "/home")
-    return ""
+	redirect(301, '/home');
 }

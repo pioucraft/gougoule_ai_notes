@@ -1,0 +1,29 @@
+#wrapper {
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 15rem auto;
+}
+
+#wrapper-sidebar {
+	background-color: #f7f7f7;
+	border-right: solid 1px gainsboro;
+	box-shadow: black 0px 0px 3px;
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	gap: 0.5rem;
+}
+
+.wrapper-sidebar-button {
+	background-color: transparent;
+	padding: 0.2rem;
+	border-radius: 0.5rem;
+}
+
+.wrapper-sidebar-button:hover {
+	background-color: gainsboro;
+}

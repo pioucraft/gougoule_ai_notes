@@ -8,27 +8,27 @@ export const user = pgTable('user', {
 	token: text('token').notNull()
 });
 
-export type userType = typeof user.$inferSelect
+export type userType = typeof user.$inferSelect;
 
 export const note = pgTable('note', {
 	id: serial('id'),
 	children: text('children'),
 	parent: integer('parent'),
 	title: text('title').notNull(),
-	body: text('body').notNull().default(""),
+	body: text('body').notNull().default(''),
 	userId: integer('user_id').notNull(),
 	createdAt: timestamp('created_at').notNull().defaultNow(),
 	updatedAt: timestamp('updated_at')
 });
 
-export type noteType = typeof note.$inferSelect
+export type noteType = typeof note.$inferSelect;
 
 export const conversation = pgTable('conversation', {
 	id: serial('id'),
 	userId: integer('user_id').notNull(),
 	title: text('title').notNull().default('New Conversation'),
-	body: text('body').notNull().default("[]"),
-	parent: integer("parent")
+	body: text('body').notNull().default('[]'),
+	parent: integer('parent')
 });
 
-export type conversationType = typeof conversation.$inferSelect
+export type conversationType = typeof conversation.$inferSelect;

@@ -8,12 +8,12 @@ export function setCookie(name: string, value: string, expirationDays: number): 
 export function getCookie(name: string): string | null {
 	const cookies = document.cookie.split(';');
 	for (let i = 0; i < cookies.length; i++) {
-	  const cookie = cookies[i].trim();
-	  const eqPos = cookie.indexOf('=');
-	  const cookieName = cookie.substring(0, eqPos);
-	  if (cookieName === name) {
-		return cookie.substring(eqPos + 1);
-	  }
+		const cookie = cookies[i].trim();
+		const eqPos = cookie.indexOf('=');
+		const cookieName = cookie.substring(0, eqPos);
+		if (cookieName === name) {
+			return cookie.substring(eqPos + 1);
+		}
 	}
 	return null;
-  }
+}
