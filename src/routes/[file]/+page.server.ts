@@ -1,8 +1,8 @@
-import { getNote } from '$lib/getNote';
-import { tryLogin } from '$lib/tryLogin';
+import { getNote } from '$lib/functions/getNote';
+import { tryLogin } from '$lib/functions/tryLogin';
 import { redirect, type Cookies } from '@sveltejs/kit';
 import { type conversationType, type noteType } from '../../db/schema';
-import { getConversation } from '$lib/getConversation';
+import { getConversation } from '$lib/functions/getConversation';
 
 export async function load({
 	cookies,

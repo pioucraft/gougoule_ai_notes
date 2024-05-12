@@ -1,6 +1,6 @@
 import { and, eq, isNull, or } from 'drizzle-orm';
-import { db } from '../db/db';
-import { conversation, note, user, type conversationType, type noteType } from '../db/schema';
+import { db } from '../../db/db';
+import { conversation, note, user, type conversationType, type noteType } from '../../db/schema';
 import { getUserId } from './getUserId';
 
 export async function getNote(

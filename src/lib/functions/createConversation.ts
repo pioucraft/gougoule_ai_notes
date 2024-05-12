@@ -1,8 +1,8 @@
-import { db } from '../db/db';
-import { note } from '../db/schema';
+import { db } from '../../db/db';
+import { conversation } from '../../db/schema';
 import { getUserId } from './getUserId';
 
-export async function createNote(
+export async function createConversation(
 	parent: number | null,
 	name: string,
 	token: string
@@ -11,11 +11,11 @@ export async function createNote(
 	if (!userId) return 'token incorrect';
 
 	return await db
-		.insert(note)
+		.insert(conversation)
 		.values({
 			parent: parent,
 			title: name,
 			userId: userId
 		})
-		.returning({ id: note.id });
+		.returning({ id: conversation.id });
 }

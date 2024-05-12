@@ -1,4 +1,4 @@
-import { createConversation } from '$lib/createConversation';
+import { createConversation } from '$lib/functions/createConversation';
 import { json } from '@sveltejs/kit';
 
 export async function POST({ request }: { request: Request }) {

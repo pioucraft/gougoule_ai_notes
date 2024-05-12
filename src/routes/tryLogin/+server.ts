@@ -1,4 +1,4 @@
-import { tryLogin } from '$lib/tryLogin';
+import { tryLogin } from '$lib/functions/tryLogin';
 
 export async function POST({ request }: { request: Request }) {
 	let authorization = request.headers.get('Authorization');

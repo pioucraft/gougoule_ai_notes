@@ -1,6 +1,6 @@
-import { db } from '../db/db';
+import { db } from '../../db/db';
 import { eq } from 'drizzle-orm';
-import { user } from '../db/schema';
+import { user } from '../../db/schema';
 
 export async function login(email: string, password: string): Promise<string> {
 	let users = await db.select().from(user).where(eq(user.email, email));

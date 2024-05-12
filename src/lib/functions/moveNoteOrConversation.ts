@@ -1,6 +1,6 @@
 import { and, eq } from 'drizzle-orm';
-import { db } from '../db/db';
-import { conversation, note } from '../db/schema';
+import { db } from '../../db/db';
+import { conversation, note } from '../../db/schema';
 import { getUserId } from './getUserId';
 
 export async function moveNoteOrConversation(

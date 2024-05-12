@@ -1,6 +1,6 @@
-import { getNote } from '$lib/getNote';
-import { tryLogin } from '$lib/tryLogin';
-import { getConversation } from '$lib/getConversation';
+import { getNote } from '$lib/functions/getNote';
+import { tryLogin } from '$lib/functions/tryLogin';
+import { getConversation } from '$lib/functions/getConversation';
 
 export async function POST({ request }: { request: Request }) {
 	let token: string | null = request.headers.get('authorization');

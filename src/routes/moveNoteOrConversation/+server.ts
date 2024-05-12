@@ -1,4 +1,4 @@
-import { moveNoteOrConversation } from '$lib/moveNoteOrConversation';
+import { moveNoteOrConversation } from '$lib/functions/moveNoteOrConversation';
 
 export async function POST({ request }: { request: Request }) {
 	let authorization = request.headers.get('Authorization');

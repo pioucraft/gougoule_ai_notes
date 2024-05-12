@@ -1,4 +1,4 @@
-import { login } from '$lib/login';
+import { login } from '$lib/functions/login';
 
 export async function POST({ request }: { request: Request }) {
 	const body: { password: string | undefined; email: string | undefined } = await request.json();

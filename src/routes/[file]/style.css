@@ -5,7 +5,7 @@
 	top: 0;
 	display: grid;
 	grid-template-rows: 1fr;
-	grid-template-columns: 15rem auto;
+	grid-template-columns: 15rem calc(100vw - 15rem);
 }
 
 #wrapper-sidebar {
@@ -16,6 +16,7 @@
 	flex-direction: column;
 	padding: 1rem;
 	gap: 0.5rem;
+	z-index: 1;
 }
 
 .wrapper-sidebar-element {
@@ -29,15 +30,9 @@
 	transition: background-color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out;
 	width: 13rem;
-	/*
-	display: flex;
-	flex-direction: row;
-	gap: 0.3em;
-	*/
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: 2em auto;
-
 	justify-content: start;
 	cursor: pointer;
 	box-sizing: border-box;

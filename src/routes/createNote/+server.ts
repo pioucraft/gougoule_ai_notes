@@ -1,4 +1,4 @@
-import { createNote } from '$lib/createNote';
+import { createNote } from '$lib/functions/createNote';
 import { json } from '@sveltejs/kit';
 
 export async function POST({ request }: { request: Request }) {

@@ -1,6 +1,6 @@
 import { and, eq, isNull } from 'drizzle-orm';
-import { db } from '../db/db';
-import { conversation, type conversationType } from '../db/schema';
+import { db } from '../../db/db';
+import { conversation, type conversationType } from '../../db/schema';
 import { getUserId } from './getUserId';
 
 export async function getConversation(

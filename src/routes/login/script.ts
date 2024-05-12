@@ -1,5 +1,5 @@
 import { goto } from '$app/navigation';
-import { setCookie } from '$lib/cookies';
+import { setCookie } from '$lib/scripts/cookies';
 import axios from 'axios';
 import { toasts } from 'svelte-simpletoast';
 

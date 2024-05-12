@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { conversation, conversationMessages, note, notesAndConversations } from './store';
-	import Chatbubble from '$lib/Chatbubble.svelte';
-	import Document from '$lib/Document.svelte';
+	import Chatbubble from '$lib/elements/Chatbubble.svelte';
+	import Document from '$lib/elements/Document.svelte';
 	import { createConversation, createNote, makeData } from './script';
-	import ArrowLeft from '$lib/ArrowLeft.svelte';
-	import UserCircle from '$lib/UserCircle.svelte';
+	import ArrowLeft from '$lib/elements/ArrowLeft.svelte';
+	import UserCircle from '$lib/elements/UserCircle.svelte';
 	import { draggable, dropzone } from './dnd';
+	import Editor from '$lib/editor/Editor.svelte';
 
 	export let data;
 
@@ -89,6 +90,7 @@
 			{/if}
 		{/if}
 	</div>
+	<Editor />
 </div>
 
 <style>
