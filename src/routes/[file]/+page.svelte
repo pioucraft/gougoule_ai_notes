@@ -90,7 +90,10 @@
 			{/if}
 		{/if}
 	</div>
+	{#if $note}
 	<Editor />
+
+	{/if}
 </div>
 
 <style>
