@@ -1,33 +1,30 @@
 // @ts-nocheck
-import { handleFileMove } from "./script";
+import { handleFileMove } from './script';
 
 export function draggable(node, data) {
-    let state = data
+	let state = data;
 
-    node.draggable = true
+	node.draggable = true;
 
-    function handle_dragstart(e){
-        e.dataTransfer.setData("text/plain", state)
-    }
+	function handle_dragstart(e) {
+		e.dataTransfer.setData('text/plain', state);
+	}
 
-    node.addEventListener('dragstart', handle_dragstart);
-    return {
-        update(data) {
-            state = data
-        },
-        destroy() {
-            node.removeEventListener('dragstart', handle_dragstart)
-        }
-    }
+	node.addEventListener('dragstart', handle_dragstart);
+	return {
+		update(data) {
+			state = data;
+		},
+		destroy() {
+			node.removeEventListener('dragstart', handle_dragstart);
+		}
+	};
 }
 
-
-export function dropzone(node, options) {
-    
-    let state = {
+export function dropzone(node) {
+	let state = {
 		dropEffect: 'move',
-		dragover_class: 'droppable',
-		...options
+		dragover_class: 'droppable'
 	};
 
 	function handle_dragenter(e) {
@@ -52,20 +49,20 @@ export function dropzone(node, options) {
 		const data = e.dataTransfer.getData('text/plain');
 		if (!(e.target instanceof HTMLElement)) return;
 		e.target.classList.remove(state.dragover_class);
-        handleFileMove(data, e)
+		const targetFile = e.target.href.split("/")[e.target.href.split("/").length - 1]
+		handleFileMove(data, targetFile  == "home" ? null : targetFile);
 	}
 
 	node.addEventListener('dragenter', handle_dragenter);
 	node.addEventListener('dragleave', handle_dragleave);
 	node.addEventListener('dragover', handle_dragover);
 	node.addEventListener('drop', handle_drop);
-    
+
 	return {
-		update(options) {
+		update() {
 			state = {
 				dropEffect: 'move',
-				dragover_class: 'droppable',
-				...options
+				dragover_class: 'droppable'
 			};
 		},
 

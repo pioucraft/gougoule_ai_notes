@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .droppable {
-    color: skyblue;   
+    border: solid red 1px;
 }

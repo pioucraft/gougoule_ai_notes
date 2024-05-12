@@ -9,6 +9,6 @@ export async function POST({ request }: { request: Request }) {
 	let body: { parent: number | undefined; id: string };
 	body = await request.json();
 	let response = await moveNoteOrConversation(body.parent ?? null, body.id, authorization);
-	if (response == 'token incorrect') return new Response(`400 ${response}`, { status: 400 });
+	if (response != 'success') return new Response(`400 ${response}`, { status: 400 });
 	return new Response(response);
 }
