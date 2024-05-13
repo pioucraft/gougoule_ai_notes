@@ -1,3 +1,4 @@
+import { goto } from "$app/navigation";
 import { getCookie } from "$lib/scripts/cookies";
 import { note } from "$lib/store";
 import axios from "axios";
@@ -53,6 +54,27 @@ export async function rename(file: string) {
 			await axios.post("/", {"file": file}, { headers: { Authorization: `Bearer ${token}` } })
 		).data;
 		note.set(notes.filter((x: any) => x.parent != Number(file))[0]);
+	} catch (err) {
+		if (axios.isAxiosError(err)) {
+			toasts.error('Error', JSON.stringify(err.response?.data), 3000, true);
+		}
+	}
+}
+
+export async function deleteNote(file: string) {
+    if(!confirm("Are you sure?")) return
+    let token = getCookie('token');
+
+    try {
+		(
+			await axios.post(
+				`/deleteNote`,
+				{ id: parseInt(file) },
+				{ headers: { Authorization: `Bearer ${token}` } }
+			)
+		).data.id;
+
+        goto("/home")
 	} catch (err) {
 		if (axios.isAxiosError(err)) {
 			toasts.error('Error', JSON.stringify(err.response?.data), 3000, true);

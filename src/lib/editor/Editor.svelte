@@ -1,16 +1,13 @@
 <div id="editor">
     <h1 id="editor-title">{$note?.title}</h1>
-    <div class="flex flex-row gap-4">
-        <button on:click={async () => await rename($note?.id.toString() ?? "")}>
+    <div class="flex flex-row gap-4 align-middle">
+        <button class="rounded p-1 hover:bg-slate-200" on:click={async () => await rename($note?.id.toString() ?? "")}>
             <Pencil />
         </button>
-        <button>
+        <button class="rounded p-1 hover:bg-slate-200" on:click={async () => await deleteNote($note?.id.toString() ?? "")}>
             <Trash />
         </button>
-        <button class="font-bold">
-            Upload image
-        </button>
-        <p>
+        <p class="p-1">
             Saved
         </p>
     </div>
@@ -82,5 +79,5 @@
 	import Pencil from "$lib/elements/Pencil.svelte";
 	import Trash from "$lib/elements/Trash.svelte";
 	import { note } from "../store";
-    import { onKeyDown, rename } from "./script"
+    import { deleteNote, onKeyDown, rename } from "./script"
 </script>
