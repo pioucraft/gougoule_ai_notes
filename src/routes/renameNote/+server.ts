@@ -8,7 +8,6 @@ export async function POST({ request }: { request: Request }) {
 
 	let body: { id: number; name: string };
 	body = await request.json();
-	console.log(body)
 	let response = await renameNote(body.name, authorization, body.id)
 	if (response != 'success') return new Response(`400 ${response}`, { status: 400 });
 	return new Response(response);
