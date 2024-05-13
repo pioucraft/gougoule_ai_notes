@@ -1,5 +1,19 @@
 <div id="editor">
-    <h1 contenteditable="true" class="editor-input">This is h1.</h1>
+    <h1 id="editor-title">{$note?.title}</h1>
+    <div class="flex flex-row gap-4">
+        <button on:click={async () => await rename($note?.id.toString() ?? "")}>
+            <Pencil />
+        </button>
+        <button>
+            <Trash />
+        </button>
+        <button class="font-bold">
+            Upload image
+        </button>
+        <p>
+            Saved
+        </p>
+    </div>
 </div>
 
 <svelte:window on:keydown={onKeyDown} />
@@ -65,5 +79,8 @@
 </style>
 
 <script>
-    import { onKeyDown } from "./script"
+	import Pencil from "$lib/elements/Pencil.svelte";
+	import Trash from "$lib/elements/Trash.svelte";
+	import { note } from "../store";
+    import { onKeyDown, rename } from "./script"
 </script>

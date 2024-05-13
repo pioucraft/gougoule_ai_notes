@@ -1,3 +1,8 @@
+import { getCookie } from "$lib/scripts/cookies";
+import { note } from "$lib/store";
+import axios from "axios";
+import { toasts } from "svelte-simpletoast";
+
 export function onKeyDown(e: KeyboardEvent) {
     // @ts-ignore
     if(!document.getElementById("editor").innerHTML.replaceAll(" ", "")) {
@@ -29,4 +34,28 @@ export function onKeyDown(e: KeyboardEvent) {
             console.log(e.target)
         }
     }
+}
+
+export async function rename(file: string) {
+    const newName = prompt("New name :")
+    let token = getCookie('token');
+
+    try {
+		(
+			await axios.post(
+				`/renameNote`,
+				{ name: newName, id: parseInt(file) },
+				{ headers: { Authorization: `Bearer ${token}` } }
+			)
+		).data.id;
+
+		let notes = (
+			await axios.post("/", {"file": file}, { headers: { Authorization: `Bearer ${token}` } })
+		).data;
+		note.set(notes.filter((x: any) => x.parent != Number(file))[0]);
+	} catch (err) {
+		if (axios.isAxiosError(err)) {
+			toasts.error('Error', JSON.stringify(err.response?.data), 3000, true);
+		}
+	}
 }

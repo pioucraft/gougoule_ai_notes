@@ -1,6 +1,6 @@
 import type { conversationType, noteType } from '../../db/schema';
 import { toasts } from 'svelte-simpletoast';
-import { conversation, conversationMessages, note, notesAndConversations } from './store';
+import { conversation, conversationMessages, note, notesAndConversations } from '../../lib/store';
 import { getCookie } from '$lib/scripts/cookies';
 import { goto } from '$app/navigation';
 import axios from 'axios';

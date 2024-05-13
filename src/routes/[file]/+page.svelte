@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { conversation, conversationMessages, note, notesAndConversations } from './store';
-	import Chatbubble from '$lib/elements/Chatbubble.svelte';
+	import { conversation, conversationMessages, note, notesAndConversations } from '../../lib/store';
 	import Document from '$lib/elements/Document.svelte';
 	import { createConversation, createNote, makeData } from './script';
 	import ArrowLeft from '$lib/elements/ArrowLeft.svelte';
 	import UserCircle from '$lib/elements/UserCircle.svelte';
 	import { draggable, dropzone } from './dnd';
 	import Editor from '$lib/editor/Editor.svelte';
+	import Chatbubble from '$lib/elements/Chatbubble.svelte';
 
 	export let data;
 
