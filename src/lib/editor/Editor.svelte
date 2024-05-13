@@ -1,4 +1,4 @@
-<div id="editor">
+<div id="editor" class="flex flex-col gap-5">
     <h1 id="editor-title">{$note?.title}</h1>
     <div class="flex flex-row gap-4 align-middle">
         <button class="rounded p-1 hover:bg-slate-200" on:click={async () => await rename($note?.id.toString() ?? "")}>
@@ -10,6 +10,9 @@
         <p class="p-1">
             Saved
         </p>
+    </div>
+    <div id="editor-editor" class="flex flex-col gap-1">
+
     </div>
 </div>
 

@@ -6,14 +6,14 @@ import { toasts } from "svelte-simpletoast";
 
 export function onKeyDown(e: KeyboardEvent) {
     // @ts-ignore
-    if(!document.getElementById("editor").innerHTML.replaceAll(" ", "")) {
+    if(!document.getElementById("editor-editor").innerHTML.replaceAll(" ", "")) {
         // @ts-ignore
-        document.getElementById("editor").innerHTML += ('<p contenteditable="true" class="editor-input"></p>')
+        document.getElementById("editor-editor").innerHTML += ('<p contenteditable="true" class="editor-editor-input"></p>')
         // @ts-ignore
-        document.getElementsByClassName("editor-input")[0].focus()
+        document.getElementsByClassName("editor-editor-input")[0].focus()
     }
     // @ts-ignore
-    if(e.target.classList.contains("editor-input")) {
+    else if(e.target.classList.contains("editor-editor-input")) {
         if(e.key == "Enter") {
             e.preventDefault();
             // @ts-ignore
@@ -23,9 +23,9 @@ export function onKeyDown(e: KeyboardEvent) {
             }
             else {
                 // @ts-ignore
-                document.getElementById("editor").innerHTML += ('<p contenteditable="true" class="editor-input"></p>')
+                document.getElementById("editor-editor").innerHTML += ('<p contenteditable="plaintext-only" class="editor-editor-input"></p>')
                 // @ts-ignore
-                document.getElementById("editor").lastElementChild.focus()
+                document.getElementById("editor-editor").lastElementChild.focus()
             }
         }
         // @ts-ignore
