@@ -3,14 +3,14 @@ import { db } from '../../db/db';
 import { note } from '../../db/schema';
 import { getUserId } from './getUserId';
 
-export async function renameNote(name: string, token: string, id: number): Promise<string> {
+export async function modifyNote(content: string, token: string, id: number): Promise<string> {
 	const userId = await getUserId(token);
 	if (!userId) return 'token incorrect';
 
 	await db
 		.update(note)
 		.set({
-			title: name,
+			body: content,
 			updatedAt: new Date()
 		})
 		.where(and(eq(note.userId, userId), eq(note.id, id)));

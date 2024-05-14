@@ -1,6 +1,13 @@
 import type { conversationType, noteType } from '../../db/schema';
 import { toasts } from 'svelte-simpletoast';
-import { conversation, conversationMessages, note, notesAndConversations } from '../../lib/store';
+import {
+	conversation,
+	conversationMessages,
+	lastSavedNoteContent,
+	note,
+	noteContent,
+	notesAndConversations
+} from '../../lib/store';
 import { getCookie } from '$lib/scripts/cookies';
 import { goto } from '$app/navigation';
 import axios from 'axios';
@@ -22,6 +29,8 @@ export function makeData(data: {
 		data.content.forEach((currentNote) => {
 			if (currentNote.id == Number(data.params.file) && 'createdAt' in currentNote) {
 				note.set(currentNote);
+				noteContent.set(currentNote.body ?? '');
+				lastSavedNoteContent.set(currentNote.body ?? '');
 			}
 		});
 		notesAndConversations.set(

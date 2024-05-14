@@ -14,7 +14,7 @@
 </script>
 
 <div id="wrapper">
-	<div class="" id="wrapper-sidebar">
+	<div id="wrapper-sidebar">
 		{#if $notesAndConversations != undefined}
 			{#if $note}
 				<a use:dropzone class="wrapper-sidebar-element" href="/{$note.parent ?? 'home'}"
@@ -27,7 +27,6 @@
 				<UserCircle />
 				{data.username}
 			</button>
-			<span class="border-separate"></span>
 			<button
 				on:click={async () => await createNote(data.params.file)}
 				class="font-bold wrapper-sidebar-element"
@@ -40,7 +39,9 @@
 			>
 				+ New Conversation
 			</button>
-			<span style="width: 100%; border: solid gray 1px; border-radius: 2px;"></span>
+			<span
+				style="width: 100%; border: solid gray 1px; border-radius: 2px; height: 2px; align-self: center;"
+			></span>
 			{#each $notesAndConversations as noteOrConversation}
 				{#if 'createdAt' in noteOrConversation}
 					<a
@@ -73,7 +74,9 @@
 				<UserCircle />
 				{data.username}
 			</button>
-			<span style="width: 100%; border: solid gray 1px; border-radius: 2px;"></span>
+			<span
+				style="width: 100%; border: solid gray 1px; border-radius: 2px; height: 2px; align-self: center;"
+			></span>
 			{#if $conversationMessages}
 				{#each $conversationMessages as message}
 					<a href="#navigator-{message.id}" class="capitalize wrapper-sidebar-element">
