@@ -1,4 +1,4 @@
-import { deleteNote } from "$lib/functions/deleteNote";
+import { deleteNote } from '$lib/functions/deleteNote';
 
 export async function POST({ request }: { request: Request }) {
 	let authorization = request.headers.get('Authorization');
@@ -8,7 +8,7 @@ export async function POST({ request }: { request: Request }) {
 
 	let body: { id: number };
 	body = await request.json();
-	let response = await deleteNote(authorization, body.id)
+	let response = await deleteNote(authorization, body.id);
 	if (response != 'success') return new Response(`400 ${response}`, { status: 400 });
 	return new Response(response);
 }

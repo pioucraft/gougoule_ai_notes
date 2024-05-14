@@ -49,8 +49,8 @@ export function dropzone(node) {
 		const data = e.dataTransfer.getData('text/plain');
 		if (!(e.target instanceof HTMLElement)) return;
 		e.target.classList.remove(state.dragover_class);
-		const targetFile = e.target.href.split("/")[e.target.href.split("/").length - 1]
-		handleFileMove(data, targetFile  == "home" ? null : targetFile);
+		const targetFile = e.target.href.split('/')[e.target.href.split('/').length - 1];
+		handleFileMove(data, targetFile == 'home' ? null : targetFile);
 	}
 
 	node.addEventListener('dragenter', handle_dragenter);

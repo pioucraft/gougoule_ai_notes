@@ -7,8 +7,8 @@ export async function moveNoteOrConversation(
 	parent: number | null,
 	id: string,
 	token: string
-): Promise<'token incorrect' | 'success' | "parent is the same as the id"> {
-	if(typeof parent == "number" && parent.toString() == id) return "parent is the same as the id"
+): Promise<'token incorrect' | 'success' | 'parent is the same as the id'> {
+	if (typeof parent == 'number' && parent.toString() == id) return 'parent is the same as the id';
 
 	const userId = await getUserId(token);
 	if (!userId) return 'token incorrect';

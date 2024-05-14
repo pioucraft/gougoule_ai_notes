@@ -10,3 +10,6 @@ export const conversationMessages = writable<
 >(undefined);
 
 export const note = writable<undefined | noteType>(undefined);
+
+export const noteContent = writable<string>('');
+export const lastSavedNoteContent = writable<string>('');

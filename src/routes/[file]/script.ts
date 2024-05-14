@@ -54,7 +54,9 @@ export async function createNote(file: string) {
 		).data.id;
 
 		let notes = (
-			await axios.post("/", parent != null ? {"file": parent.toString()} : undefined, { headers: { Authorization: `Bearer ${token}` } })
+			await axios.post('/', parent != null ? { file: parent.toString() } : undefined, {
+				headers: { Authorization: `Bearer ${token}` }
+			})
 		).data;
 		notesAndConversations.set(notes.filter((x: any) => x.parent == Number(file) || file == 'home'));
 	} catch (err) {
@@ -79,7 +81,9 @@ export async function createConversation(file: string) {
 		).data.id;
 
 		let notes = (
-			await axios.post("/", parent != null ? {"file": parent.toString()} : undefined, { headers: { Authorization: `Bearer ${token}` } })
+			await axios.post('/', parent != null ? { file: parent.toString() } : undefined, {
+				headers: { Authorization: `Bearer ${token}` }
+			})
 		).data;
 		notesAndConversations.set(notes.filter((x: any) => x.parent == Number(file) || file == 'home'));
 	} catch (err) {
@@ -93,21 +97,24 @@ export async function handleFileMove(original: string, data: string | null) {
 	try {
 		let token = getCookie('token');
 
-		let parent: string | number | null = data
-		if(typeof data == "string") parent = Number(data)
+		let parent: string | number | null = data;
+		if (typeof data == 'string') parent = Number(data);
 
-		await axios.post("moveNoteOrConversation", {
-			"parent": parent,
-			"id": original
-		}, {
-			"headers": {
-				"Authorization": `Bearer ${token}`
+		await axios.post(
+			'moveNoteOrConversation',
+			{
+				parent: parent,
+				id: original
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
 			}
-		})
+		);
 
 		goto(`/${data == null ? 'home' : data}`);
-	}
-	catch(err) {
+	} catch (err) {
 		if (axios.isAxiosError(err)) {
 			toasts.error('Error', err.response?.data, 3000, true);
 		}

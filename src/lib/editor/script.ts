@@ -1,47 +1,19 @@
-import { goto } from "$app/navigation";
-import { getCookie } from "$lib/scripts/cookies";
-import { note } from "$lib/store";
-import axios from "axios";
-import { toasts } from "svelte-simpletoast";
+import { goto } from '$app/navigation';
+import { getCookie } from '$lib/scripts/cookies';
+import { lastSavedNoteContent, note, noteContent } from '$lib/store';
+import axios from 'axios';
+import { toasts } from 'svelte-simpletoast';
+import { get } from 'svelte/store';
 
-export function onKeyDown(e: KeyboardEvent) {
-    // @ts-ignore
-    if(!document.getElementById("editor-editor").innerHTML.replaceAll(" ", "")) {
-        // @ts-ignore
-        document.getElementById("editor-editor").innerHTML += ('<p contenteditable="true" class="editor-editor-input"></p>')
-        // @ts-ignore
-        document.getElementsByClassName("editor-editor-input")[0].focus()
-    }
-    // @ts-ignore
-    else if(e.target.classList.contains("editor-editor-input")) {
-        if(e.key == "Enter") {
-            e.preventDefault();
-            // @ts-ignore
-            if(e.target.nextElementSibling) {
-                // @ts-ignore
-                e.target.nextElementSibling.focus();
-            }
-            else {
-                // @ts-ignore
-                document.getElementById("editor-editor").innerHTML += ('<p contenteditable="plaintext-only" class="editor-editor-input"></p>')
-                // @ts-ignore
-                document.getElementById("editor-editor").lastElementChild.focus()
-            }
-        }
-        // @ts-ignore
-        else if(e.key == "Backspace" && (e.target.innerHTML == "" || e.target.innerHTML == "<br>")) {
-            // @ts-ignore
-            e.target.remove()
-            console.log(e.target)
-        }
-    }
-}
+
+lastSavedNoteContent.set(get(noteContent));	
+lastSavedNoteContent.subscribe(() => {});
 
 export async function rename(file: string) {
-    const newName = prompt("New name :")
-    let token = getCookie('token');
+	const newName = prompt('New name :');
+	let token = getCookie('token');
 
-    try {
+	try {
 		(
 			await axios.post(
 				`/renameNote`,
@@ -51,7 +23,7 @@ export async function rename(file: string) {
 		).data.id;
 
 		let notes = (
-			await axios.post("/", {"file": file}, { headers: { Authorization: `Bearer ${token}` } })
+			await axios.post('/', { file: file }, { headers: { Authorization: `Bearer ${token}` } })
 		).data;
 		note.set(notes.filter((x: any) => x.parent != Number(file))[0]);
 	} catch (err) {
@@ -62,10 +34,10 @@ export async function rename(file: string) {
 }
 
 export async function deleteNote(file: string) {
-    if(!confirm("Are you sure?")) return
-    let token = getCookie('token');
+	if (!confirm('Are you sure?')) return;
+	let token = getCookie('token');
 
-    try {
+	try {
 		(
 			await axios.post(
 				`/deleteNote`,
@@ -74,10 +46,33 @@ export async function deleteNote(file: string) {
 			)
 		).data.id;
 
-        goto("/home")
+		goto('/home');
 	} catch (err) {
 		if (axios.isAxiosError(err)) {
 			toasts.error('Error', JSON.stringify(err.response?.data), 3000, true);
 		}
 	}
 }
+
+export function textAreaChange() {
+	let textarea = document.getElementById('editor-editor');
+	if (!textarea) return;
+
+	textarea.style.height = 'auto';
+	textarea.style.height = `${textarea.scrollHeight}px`;
+}
+
+async function save() {
+	lastSavedNoteContent.set(get(noteContent));	
+	lastSavedNoteContent.subscribe(() => {});
+
+	return;
+}
+
+
+setInterval(async () => {
+	if(get(lastSavedNoteContent) != get(noteContent)) {
+		await save();
+		textAreaChange()
+	}
+}, 2*1000)

@@ -19,15 +19,13 @@
 			{#if $note}
 				<a use:dropzone class="wrapper-sidebar-element" href="/{$note.parent ?? 'home'}"
 					><ArrowLeft />
-					
-						.../{$note.title}
-					</a
-				>
+
+					.../{$note.title}
+				</a>
 			{/if}
 			<button class="wrapper-sidebar-element">
 				<UserCircle />
-					{data.username}
-				
+				{data.username}
 			</button>
 			<span class="border-separate"></span>
 			<button
@@ -51,48 +49,42 @@
 						href="/{noteOrConversation.id}"
 						class="wrapper-sidebar-element"
 						><Document />
-						
-							{noteOrConversation.title}
-						</a
-					>
+
+						{noteOrConversation.title}
+					</a>
 				{:else}
 					<a
 						use:draggable={`ai-${noteOrConversation.id}`}
 						href="/ai-{noteOrConversation.id}"
 						class="wrapper-sidebar-element"
 						><Chatbubble />
-						
-							{noteOrConversation.title}
-						</a
-					>
+
+						{noteOrConversation.title}
+					</a>
 				{/if}
 			{/each}
 		{:else if $conversation != undefined}
 			<a class="wrapper-sidebar-element" href="/{$conversation.parent ?? 'home'}"
 				><ArrowLeft />
-				
-					.../{$conversation.title}
-</a
-			>
+
+				.../{$conversation.title}
+			</a>
 			<button class="wrapper-sidebar-element">
 				<UserCircle />
-					{data.username}
+				{data.username}
 			</button>
 			<span style="width: 100%; border: solid gray 1px; border-radius: 2px;"></span>
 			{#if $conversationMessages}
 				{#each $conversationMessages as message}
-					<a href="#navigator-{message.id}" class="capitalize wrapper-sidebar-element"
-						>
-							{message.role}: {message.content}
-						</a
-					>
+					<a href="#navigator-{message.id}" class="capitalize wrapper-sidebar-element">
+						{message.role}: {message.content}
+					</a>
 				{/each}
 			{/if}
 		{/if}
 	</div>
 	{#if $note}
-	<Editor />
-
+		<Editor />
 	{/if}
 </div>
 
