@@ -11,7 +11,8 @@ export async function renameNote(name: string, token: string, id: number): Promi
 		.update(note)
 		.set({
 			title: name,
-			updatedAt: new Date()
+			updatedAt: new Date(),
+			upToDateVector: false
 		})
 		.where(and(eq(note.userId, userId), eq(note.id, id)));
 

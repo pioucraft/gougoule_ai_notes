@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, integer } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp, integer, boolean } from 'drizzle-orm/pg-core';
 
 export const user = pgTable('user', {
 	id: serial('id'),
@@ -16,8 +16,9 @@ export const note = pgTable('note', {
 	title: text('title').notNull(),
 	body: text('body').notNull().default(''),
 	userId: integer('user_id').notNull(),
-	createdAt: timestamp('created_at').notNull().defaultNow(),
-	updatedAt: timestamp('updated_at').notNull().defaultNow()
+	createdAt: timestamp('created_at').notNull().default(new Date()),
+	updatedAt: timestamp('updated_at').notNull().default(new Date()),
+	upToDateVector: boolean('upToDateVector').notNull().default(false)
 });
 
 export type noteType = typeof note.$inferSelect;

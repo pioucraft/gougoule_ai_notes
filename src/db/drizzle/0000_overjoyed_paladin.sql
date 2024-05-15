@@ -12,8 +12,9 @@ CREATE TABLE IF NOT EXISTS "note" (
 	"title" text NOT NULL,
 	"body" text DEFAULT '' NOT NULL,
 	"user_id" integer NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL
+	"created_at" timestamp DEFAULT '2024-05-15 18:15:52.379' NOT NULL,
+	"updated_at" timestamp DEFAULT '2024-05-15 18:15:52.379' NOT NULL,
+	"upToDateVector" boolean DEFAULT false NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user" (

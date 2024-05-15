@@ -11,7 +11,8 @@ export async function modifyNote(content: string, token: string, id: number): Pr
 		.update(note)
 		.set({
 			body: content,
-			updatedAt: new Date()
+			updatedAt: new Date(),
+			upToDateVector: false
 		})
 		.where(and(eq(note.userId, userId), eq(note.id, id)));
 

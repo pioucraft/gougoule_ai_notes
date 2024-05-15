@@ -80,7 +80,16 @@ const main = async () => {
 		];
 		await db.insert(conversation).values({
 			userId: userId,
-			body: JSON.stringify([...conversationBody, ...conversationBody, ...conversationBody, ...conversationBody, ...conversationBody, ...conversationBody, ...conversationBody, ...conversationBody])
+			body: JSON.stringify([
+				...conversationBody,
+				...conversationBody,
+				...conversationBody,
+				...conversationBody,
+				...conversationBody,
+				...conversationBody,
+				...conversationBody,
+				...conversationBody
+			])
 		});
 
 		await db.insert(conversation).values({
@@ -91,7 +100,7 @@ const main = async () => {
 
 		await db.insert(note).values({
 			title: 'Bonjour',
-			body: "Hello",
+			body: 'Hello',
 			userId: userId
 		});
 		console.log('Database seeded successfully');

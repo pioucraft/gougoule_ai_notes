@@ -4,26 +4,26 @@
 	import { conversation, conversationMessages, messageContent } from '$lib/store';
 	import { deleteConversation, rename } from './script';
 	import { onMount } from 'svelte';
-	import DownDoubleArrow from "$lib/elements/downDoubleArrow.svelte"
+	import DownDoubleArrow from '$lib/elements/downDoubleArrow.svelte';
 	import { animateScroll } from 'svelte-scrollto-element';
 	import TextAreaAutoResize from './textAreaAutoResize.svelte';
 	import Send from '$lib/elements/Send.svelte';
 	import { get } from 'svelte/store';
 
-	var showDownArrow = false
+	var showDownArrow = false;
 
 	onMount(() => {
 		window.addEventListener('scroll', scrolled);
-		animateScroll.scrollToBottom()
-	}) 
+		animateScroll.scrollToBottom();
+	});
 	function scrolled() {
-		showDownArrow = window.document.documentElement.scrollHeight - window.innerHeight >= window.scrollY + 65
+		showDownArrow =
+			window.document.documentElement.scrollHeight - window.innerHeight >= window.scrollY + 65;
 	}
 	function scrollBottom() {
-		animateScroll.scrollToBottom()
-		scrolled()
+		animateScroll.scrollToBottom();
+		scrolled();
 	}
-	
 </script>
 
 <div id="conversation" class="flex flex-col p-12">
@@ -53,11 +53,20 @@
 	</div>
 
 	{#if showDownArrow}
-		<button on:click={() => {scrollBottom()}} class="fixed right-5 bottom-5 border-gray-500 border bg-white p-2 rounded-full"><DownDoubleArrow /></button>
+		<button
+			on:click={() => {
+				scrollBottom();
+			}}
+			class="fixed right-5 bottom-5 border-gray-500 border bg-white p-2 rounded-full"
+			><DownDoubleArrow /></button
+		>
 	{/if}
 	<div id="input" class="flex flex-row gap-2 mb-1 mt-3">
 		<TextAreaAutoResize maxRows={10} />
-		<button class="bg-black text-white p-2 rounded-full" on:click={() => console.log(get(messageContent))}><Send /></button>
+		<button
+			class="bg-black text-white p-2 rounded-full"
+			on:click={() => console.log(get(messageContent))}><Send /></button
+		>
 	</div>
 </div>
 

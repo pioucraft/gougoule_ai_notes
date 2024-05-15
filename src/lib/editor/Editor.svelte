@@ -5,7 +5,7 @@
 	import { deleteNote, rename, textAreaChange } from './script';
 </script>
 
-<div  id="editor" class="flex flex-col gap-5">
+<div id="editor" class="flex flex-col gap-5">
 	<h1 id="editor-title">{$note?.title}</h1>
 	<div class="flex flex-row gap-4 align-middle">
 		<button

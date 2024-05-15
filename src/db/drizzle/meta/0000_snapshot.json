@@ -1,5 +1,5 @@
 {
-	"id": "0e95af84-9cda-4d26-8a9d-1e8fcb405df2",
+	"id": "85374506-b564-4fa5-9906-c659533c17f9",
 	"prevId": "00000000-0000-0000-0000-000000000000",
 	"version": "6",
 	"dialect": "postgresql",
@@ -86,14 +86,21 @@
 					"type": "timestamp",
 					"primaryKey": false,
 					"notNull": true,
-					"default": "now()"
+					"default": "'2024-05-15 18:15:52.379'"
 				},
 				"updated_at": {
 					"name": "updated_at",
 					"type": "timestamp",
 					"primaryKey": false,
 					"notNull": true,
-					"default": "now()"
+					"default": "'2024-05-15 18:15:52.379'"
+				},
+				"upToDateVector": {
+					"name": "upToDateVector",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true,
+					"default": false
 				}
 			},
 			"indexes": {},
