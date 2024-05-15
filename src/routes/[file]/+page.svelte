@@ -7,6 +7,8 @@
 	import { draggable, dropzone } from './dnd';
 	import Editor from '$lib/editor/Editor.svelte';
 	import Chatbubble from '$lib/elements/Chatbubble.svelte';
+	import { stringify } from 'postcss';
+	import Conversation from '$lib/conversation/Conversation.svelte';
 
 	export let data;
 
@@ -88,6 +90,9 @@
 	</div>
 	{#if $note}
 		<Editor />
+	{/if}
+	{#if $conversationMessages}
+		<Conversation />
 	{/if}
 </div>
 

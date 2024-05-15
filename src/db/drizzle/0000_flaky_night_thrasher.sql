@@ -8,13 +8,12 @@ CREATE TABLE IF NOT EXISTS "conversation" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "note" (
 	"id" serial NOT NULL,
-	"children" text,
 	"parent" integer,
 	"title" text NOT NULL,
 	"body" text DEFAULT '' NOT NULL,
 	"user_id" integer NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp
+	"updated_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user" (

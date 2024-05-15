@@ -17,7 +17,7 @@ export const note = pgTable('note', {
 	body: text('body').notNull().default(''),
 	userId: integer('user_id').notNull(),
 	createdAt: timestamp('created_at').notNull().defaultNow(),
-	updatedAt: timestamp('updated_at')
+	updatedAt: timestamp('updated_at').notNull().defaultNow()
 });
 
 export type noteType = typeof note.$inferSelect;

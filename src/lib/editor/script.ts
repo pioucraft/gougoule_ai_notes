@@ -78,7 +78,7 @@ async function save() {
 		if (axios.isAxiosError(err)) {
 			toasts.error('Error', JSON.stringify(err.response?.data), 3000, true);
 		} else {
-			toasts.error('Error', "Error", 3000, true);
+			toasts.error('Error', 'Error', 3000, true);
 		}
 	}
 

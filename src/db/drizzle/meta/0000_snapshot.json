@@ -1,10 +1,10 @@
 {
-	"id": "e82453a4-6d06-4dc5-a6ef-55bcecff4fa7",
-	"prevId": "005f0726-5c3f-44ad-abc0-08601902a077",
-	"version": "5",
-	"dialect": "pg",
+	"id": "0e95af84-9cda-4d26-8a9d-1e8fcb405df2",
+	"prevId": "00000000-0000-0000-0000-000000000000",
+	"version": "6",
+	"dialect": "postgresql",
 	"tables": {
-		"conversation": {
+		"public.conversation": {
 			"name": "conversation",
 			"schema": "",
 			"columns": {
@@ -46,7 +46,7 @@
 			"compositePrimaryKeys": {},
 			"uniqueConstraints": {}
 		},
-		"note": {
+		"public.note": {
 			"name": "note",
 			"schema": "",
 			"columns": {
@@ -92,7 +92,8 @@
 					"name": "updated_at",
 					"type": "timestamp",
 					"primaryKey": false,
-					"notNull": false
+					"notNull": true,
+					"default": "now()"
 				}
 			},
 			"indexes": {},
@@ -100,7 +101,7 @@
 			"compositePrimaryKeys": {},
 			"uniqueConstraints": {}
 		},
-		"user": {
+		"public.user": {
 			"name": "user",
 			"schema": "",
 			"columns": {
