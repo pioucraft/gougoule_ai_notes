@@ -3,6 +3,7 @@ import { goto } from '$app/navigation';
 import { getCookie } from '$lib/scripts/cookies';
 import { lastSavedNoteContent, note, noteContent } from '$lib/store';
 import axios from 'axios';
+import { onMount } from 'svelte';
 import { toasts } from 'svelte-simpletoast';
 import { get } from 'svelte/store';
 
