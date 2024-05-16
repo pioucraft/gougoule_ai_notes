@@ -8,7 +8,7 @@ import {
 	noteContent,
 	notesAndConversations
 } from '../../lib/store';
-import { getCookie } from '$lib/scripts/cookies';
+import { getCookie, setCookie } from '$lib/scripts/cookies';
 import { goto } from '$app/navigation';
 import axios from 'axios';
 
@@ -128,4 +128,10 @@ export async function handleFileMove(original: string, data: string | null) {
 			toasts.error('Error', err.response?.data, 3000, true);
 		}
 	}
+}
+
+export function logout() {
+	if(!confirm('Are you sure you want to logout ?')) return;
+	setCookie('token', '', -1);
+	goto('/login');
 }

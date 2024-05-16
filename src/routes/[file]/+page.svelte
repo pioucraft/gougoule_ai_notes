@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { conversation, conversationMessages, note, notesAndConversations } from '../../lib/store';
 	import Document from '$lib/elements/Document.svelte';
-	import { createConversation, createNote, makeData } from './script';
+	import { createConversation, createNote, logout, makeData } from './script';
 	import ArrowLeft from '$lib/elements/ArrowLeft.svelte';
 	import UserCircle from '$lib/elements/UserCircle.svelte';
 	import { draggable, dropzone } from './dnd';
 	import Editor from '$lib/editor/Editor.svelte';
 	import Chatbubble from '$lib/elements/Chatbubble.svelte';
-	import { stringify } from 'postcss';
 	import Conversation from '$lib/conversation/Conversation.svelte';
 
 	export let data;
@@ -25,7 +24,7 @@
 					.../{$note.title}
 				</a>
 			{/if}
-			<button class="wrapper-sidebar-element">
+			<button on:click={logout} class="wrapper-sidebar-element">
 				<UserCircle />
 				{data.username}
 			</button>
