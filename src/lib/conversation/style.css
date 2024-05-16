@@ -43,3 +43,9 @@
 #conversation {
 	margin-left: 15rem;
 }
+
+@media (max-width: 45rem) {
+	#conversation {
+		margin-left: 0;
+	}
+}

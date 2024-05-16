@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { conversation, conversationMessages, note, notesAndConversations } from '../../lib/store';
 	import Document from '$lib/elements/Document.svelte';
-	import { createConversation, createNote, logout, makeData } from './script';
+	import { createConversation, createNote, logout, makeData, menuBarChange } from './script';
 	import ArrowLeft from '$lib/elements/ArrowLeft.svelte';
 	import UserCircle from '$lib/elements/UserCircle.svelte';
 	import { draggable, dropzone } from './dnd';
 	import Editor from '$lib/editor/Editor.svelte';
 	import Chatbubble from '$lib/elements/Chatbubble.svelte';
 	import Conversation from '$lib/conversation/Conversation.svelte';
+	import Bars3 from '$lib/elements/Bars3.svelte';
 
 	export let data;
 
@@ -15,7 +16,7 @@
 </script>
 
 <div id="wrapper">
-	<div id="wrapper-sidebar">
+	<div id="wrapper-sidebar" class="notVisible">
 		{#if $notesAndConversations != undefined}
 			{#if $note}
 				<a use:dropzone class="wrapper-sidebar-element" href="/{$note.parent ?? 'home'}"
@@ -94,6 +95,10 @@
 		<Conversation />
 	{/if}
 </div>
+
+<button on:click={menuBarChange} id="burgerMenu" class="fixed left-3 top-3">
+	<Bars3 />
+</button>
 
 <style>
 	@import './style.css';

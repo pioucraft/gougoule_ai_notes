@@ -131,7 +131,19 @@ export async function handleFileMove(original: string, data: string | null) {
 }
 
 export function logout() {
-	if(!confirm('Are you sure you want to logout ?')) return;
+	if (!confirm('Are you sure you want to logout ?')) return;
 	setCookie('token', '', -1);
 	goto('/login');
+}
+
+export function menuBarChange() {
+	let invisible = document.getElementsByClassName('notVisible')[0];
+	let visible = document.getElementsByClassName('isVisible')[0];
+	if (visible) {
+		visible.classList.remove('isVisible');
+		visible.classList.add('notVisible');
+	} else {
+		invisible.classList.add('isVisible');
+		invisible.classList.remove('notVisible');
+	}
 }

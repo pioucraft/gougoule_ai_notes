@@ -55,4 +55,10 @@
 		font-size: 1.5rem;
 		border-bottom: 1px solid #ccc;
 	}
+
+	@media (max-width: 45rem) {
+		#editor {
+			margin-left: 0;
+		}
+	}
 </style>

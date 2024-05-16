@@ -30,7 +30,7 @@
 	padding: 0.2rem;
 	border-radius: 0.5rem;
 	color: gray;
-	transition: background-color 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out;
 	width: 13rem;
 	display: grid;
@@ -45,4 +45,22 @@
 .wrapper-sidebar-element:hover {
 	background-color: gainsboro;
 	color: black;
+}
+
+@media (max-width: 45rem) {
+	#wrapper-sidebar {
+		padding-top: 3rem;
+	}
+
+	#burgerMenu {
+		z-index: 2;
+	}
+
+	.isVisible {
+		visibility: visible;
+	}
+
+	.notVisible {
+		visibility: hidden;
+	}
 }

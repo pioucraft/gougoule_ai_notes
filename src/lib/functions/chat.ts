@@ -45,7 +45,11 @@ export async function chat(
 				{
 					id: noteToUpdate.id,
 					vector: embedding.data.embedding,
-					payload: { content: noteToUpdate.body, title: noteToUpdate.title, userId: noteToUpdate.userId }
+					payload: {
+						content: noteToUpdate.body,
+						title: noteToUpdate.title,
+						userId: noteToUpdate.userId
+					}
 				}
 			]
 		});
@@ -71,14 +75,14 @@ export async function chat(
 				limit: parseInt(CONTEXT_NOTES_LIMIT),
 				filter: {
 					must: [
-					  {
-						key: "userId",
-						match: {
-						  value: userId,
-						},
-					  },
-					],
-				}				
+						{
+							key: 'userId',
+							match: {
+								value: userId
+							}
+						}
+					]
+				}
 			})
 		).map((x) => x.payload)
 	);
