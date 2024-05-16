@@ -3,6 +3,8 @@ import { db } from '../../db/db';
 import { note, type conversationType } from '../../db/schema';
 import { getUserId } from './getUserId';
 import axios from 'axios';
+import { client } from '../../db/QdrantDb';
+import { DB_NAME } from '$env/static/private';
 
 export async function chat(
 	id: number,
@@ -22,6 +24,15 @@ export async function chat(
 			prompt: noteToUpdate.body,
 			model: process.env.OLLAMA_EMBEDDING_MODEL
 		});
-		console.log('embedding');
+		
+		await client.upsert(DB_NAME, {
+			wait: true,
+			points : [
+				{ id: noteToUpdate.id, vector: embedding.data.embedding, payload: {"content": noteToUpdate.body, "title": noteToUpdate.title} },
+			]
+		})
+		await db.update(note).set({
+			"upToDateVector": true
+		}).where(eq(note.id, noteToUpdate.id));
 	}
 }
