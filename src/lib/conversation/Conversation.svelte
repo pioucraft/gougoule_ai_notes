@@ -2,13 +2,20 @@
 	import Pencil from '$lib/elements/Pencil.svelte';
 	import Trash from '$lib/elements/Trash.svelte';
 	import { conversation, conversationMessages, messageContent } from '$lib/store';
-	import { deleteConversation, rename } from './script';
+	import { chat, deleteConversation, rename } from './script';
 	import { onMount } from 'svelte';
 	import DownDoubleArrow from '$lib/elements/downDoubleArrow.svelte';
 	import { animateScroll } from 'svelte-scrollto-element';
 	import TextAreaAutoResize from './textAreaAutoResize.svelte';
 	import Send from '$lib/elements/Send.svelte';
-	import { get } from 'svelte/store';
+	// @ts-ignore
+	import { Converter } from 'showdown';
+	const converter = new Converter({
+		tasklists: true,
+		strikethrough: true,
+		simplifiedautolink: true,
+		tables: true
+	});
 
 	var showDownArrow = false;
 
@@ -46,7 +53,7 @@
 		{#if $conversationMessages}
 			{#each $conversationMessages as message}
 				<div class="message-{message.role}" id="navigator-{message.id}">
-					<p class="text-xl">{message.content}</p>
+					<div class="text-xl flex flex-col gap-3">{@html converter.makeHtml(message.content)}</div>
 				</div>
 			{/each}
 		{/if}
@@ -65,24 +72,11 @@
 		<TextAreaAutoResize maxRows={10} />
 		<button
 			class="bg-black text-white p-2 rounded-full"
-			on:click={() => console.log(get(messageContent))}><Send /></button
+			on:click={() => chat(window.location.pathname.split('/ai-')[1])}><Send /></button
 		>
 	</div>
 </div>
 
-<style>
-	h1 {
-		font-size: 3em;
-	}
-
-	.message-user {
-		background-color: gainsboro;
-		padding: 10px;
-		border-radius: 1rem;
-		align-self: self-end;
-	}
-
-	#conversation {
-		margin-left: 15rem;
-	}
+<style global>
+	@import './style.css';
 </style>

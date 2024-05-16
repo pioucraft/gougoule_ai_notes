@@ -1,0 +1,45 @@
+:global(h1) {
+	font-size: 1.5em;
+}
+
+:global(h2) {
+	font-size: 1.35em;
+}
+
+:global(h3) {
+	font-size: 1.125em;
+}
+
+:global(h4) {
+	font-size: 1em;
+}
+
+:global(h5) {
+	font-size: 0.875em;
+}
+
+:global(h6) {
+	font-size: 0.75em;
+}
+
+:global(pre) {
+	background-color: #f5f2f0;
+	padding: 2rem;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+:global(li)::before {
+	content: '- ';
+}
+
+.message-user {
+	background-color: gainsboro;
+	padding: 10px;
+	border-radius: 1rem;
+	align-self: self-end;
+}
+
+#conversation {
+	margin-left: 15rem;
+}

@@ -80,16 +80,7 @@ const main = async () => {
 		];
 		await db.insert(conversation).values({
 			userId: userId,
-			body: JSON.stringify([
-				...conversationBody,
-				...conversationBody,
-				...conversationBody,
-				...conversationBody,
-				...conversationBody,
-				...conversationBody,
-				...conversationBody,
-				...conversationBody
-			])
+			body: JSON.stringify([...conversationBody])
 		});
 
 		await db.insert(conversation).values({
